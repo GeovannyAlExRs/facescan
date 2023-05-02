@@ -1,1 +1,52 @@
-<p>upload-page works!</p>
+<div class="content-main">
+  <div class="sub-main">
+    <div class="main-left">
+      <div class="card-header">
+        <div class="sub-card">
+          <h3>Cargar imagen</h3>
+          <div class="card-img">
+            <div class="sub-card-img fotoUser">
+              <i class="uil uil-capture img-face-scan"></i>
+            </div>
+          </div>
+          <form>
+            <div class="form-group">
+                <input type="file" class="form-control-file" name="file" id="fotoUser" formControlName="imgFile" accept="image/*">
+                <button type="submit" class="btn btn-outline-secondary mt-3">
+                  Subir
+                  <i class="uil uil-upload">
+                  </i></button>
+            </div>
+        </form>
+          <!--input type="file" (change)="onSelectFile($event)" class="class-foto-user"/-->
+        </div>
+      </div>
+    </div>
+
+    <div class="main-right">
+      <div class="card-header">
+        <div class="sub-card">
+          <div class="card text-white bg-dark mb-3">
+            <h3>Rostro Procesados</h3>
+            <table class="table table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>foto.png</td>
+                        <td>Geovanny AlEx Rs</td>
+                        <td><button class="btn btn-danger btn-sm"><i class="uil uil-times-circle"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
