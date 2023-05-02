@@ -1,0 +1,11 @@
+.home-wrapper {
+  margin: 8.5% 5% 0px 5%;
+  /*background: rgb(23, 23, 26);
+  border: 1px red solid;
+  background: linear-gradient(90deg, rgb(1, 9, 56) 50%, rgba(29, 180, 185, 0.3) 100%);*/
+  min-height: 77vh;
+  width: 90%;
+  position: absolute;
+  border-radius: var(--border-radius-1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+}
