@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ScanPageComponent } from '@modules/scan/page/scan-page/scan-page.component';
 import { SharedModule } from '@shared/shared.module';
 import { UploadRoutingModule } from './upload-routing.module';
+import { UploadPageComponent } from './page/upload-page/upload-page.component';
 
 
 
 @NgModule({
   declarations: [
-    ScanPageComponent],
+    UploadPageComponent],
   imports: [
     CommonModule,
     UploadRoutingModule,

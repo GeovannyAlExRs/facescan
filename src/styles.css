@@ -11,7 +11,7 @@
   --shadow-2: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   --border-radius-1: 10px;
   --border-radius-2: 15px;
-  --font-family-1: 'Comforta', sans-serif;
+  --font-family-1: 'Comfortaa', sans-serif;
   --animation-1: 200ms;
   --bs-body-color: #697a8d;
   --bs-body-bg: #f5f5f9;
@@ -21,12 +21,17 @@
 html, body {
     height: 99.5vh;
     width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
     background: rgb(62,69,171);
-    background: linear-gradient(60deg, rgba(62,69,171,1) 0%, rgba(27,0,88,1) 40%, rgba(19,0,53,1) 100%);
+    background: url("./assets/image/bnbackground.png"), linear-gradient(60deg, rgba(62,69,171,1) 15%, rgba(27,0,88,1) 65%, rgba(19,0,53,1) 100%);
     margin: 0;
     padding: 0;
     font-family: var(--font-family-1);
     font-size: var(--font-size-1);
     color: var(--color-4);
 }
+
 
