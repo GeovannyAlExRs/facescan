@@ -19,11 +19,11 @@ export class UploadPageComponent  implements OnInit{
   imgData: ImageModel[] = []
   imgProcess: any;
   btnActive = true;
-  file: any;
+  fileImg: any;
 
   @ViewChild('imageFile', { static: true }) imageFile!: ElementRef;
 
-  constructor(private fb: FormBuilder, private renderer: Renderer2, private _firebase: FirebaseConnectService) {} //, private _imgService: ImageService
+  constructor(private fb: FormBuilder, private renderer: Renderer2, private _firebase: FirebaseConnectService) {}
 
   imageForm = this.fb.group({
     nombre: ['', [Validators.required]],
@@ -43,19 +43,19 @@ export class UploadPageComponent  implements OnInit{
       var icon = document.createElement('i');
       var elementImage = document.createElement('img');
 
-      this.file = event.target.files;
+      this.fileImg = event.target.files;
       const reader = new FileReader();
-      reader.readAsDataURL(this.file[0]);
+      reader.readAsDataURL(this.fileImg[0]);
 
       reader.onloadend = (event: any) => {
         this.imgURL = event.target.result;
         this.imgElement = event.target.result;
         elementImage.src = `${this.imgElement}`;
-        this.image = { archivo: this.file[0] }
+        this.image = { file: this.fileImg[0] }
+        //console.log('ImgURL: ', this.imgURL, ' SRC: ', elementImage.src, ' this.image: ', this.image);
       }
 
       this.btnActive = false;
-
 
       containerImage.classList.add('containerImage');
 
@@ -103,7 +103,7 @@ export class UploadPageComponent  implements OnInit{
         this.imgURL = '../../../../../assets/image/scan.png';
         this.imageForm.reset();
         this.btnActive = true;
-      }, 2000);
+      }, 3500);
 
     } else {
       imageContainer.querySelector('.status').innerText = 'Imagen Procesada';
@@ -127,9 +127,8 @@ export class UploadPageComponent  implements OnInit{
 
 
   onSubmit() {
-    console.log('SUBMIT: GUARDANDO IMAGEN');
-
-    /*Swal.fire({
+    //console.log('SUBMIT: GUARDANDO IMAGEN');
+    Swal.fire({
       title: 'Ingresa el nombre de la imagen',
       input: 'text',
       inputAttributes: { autocapitalize: 'off' },
@@ -139,8 +138,9 @@ export class UploadPageComponent  implements OnInit{
     }).then((result) => {
       if (result.isConfirmed && result.value) {
         let loadImgData: any = { nameImg: result.value }
+        //console.log('ENVIAR DATO A FIREBASE => imgaDATA: ', loadImgData, ' Image: ', this.image);
 
-        this._imgService.loadImageFirebase(this.image, loadImgData);
+        this._firebase.loadImageFirebase(this.image, loadImgData);
 
         Swal.fire({
           icon: 'success',
@@ -164,7 +164,7 @@ export class UploadPageComponent  implements OnInit{
           }).then((result) => { this.imageForm.reset() })
         }
       }
-    })*/
+    })
   }
 
 
