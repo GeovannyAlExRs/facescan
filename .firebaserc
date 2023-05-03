@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "facescan-ec": {
+      "hosting": {
+        "facescan": [
+          "facescan-ec"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "facescan-ec"
+  }
+}
