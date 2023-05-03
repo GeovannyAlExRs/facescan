@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ImageModel } from '@core/model/image.model';
+import { FirebaseConnectService } from '@shared/services/firebase/firebase-connect.service';
 
 import * as faceapi from 'face-api.js';
 import Swal from 'sweetalert2';
@@ -22,7 +23,7 @@ export class UploadPageComponent  implements OnInit{
 
   @ViewChild('imageFile', { static: true }) imageFile!: ElementRef;
 
-  constructor(private fb: FormBuilder, private renderer: Renderer2) {} //, private _imgService: ImageService
+  constructor(private fb: FormBuilder, private renderer: Renderer2, private _firebase: FirebaseConnectService) {} //, private _imgService: ImageService
 
   imageForm = this.fb.group({
     nombre: ['', [Validators.required]],
