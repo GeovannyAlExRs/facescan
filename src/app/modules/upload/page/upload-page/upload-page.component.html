@@ -3,19 +3,24 @@
     <div class="main-left">
       <div class="card-header">
         <div class="sub-card">
-          <h3>Cargar imagen</h3>
+          <h3 class="title">Cargar imagen</h3>
           <div class="card-img">
             <div class="sub-card-img fotoUser">
-              <i class="uil uil-capture img-face-scan"></i>
+              <!--i class="uil uil-capture img-face-scan"></i-->
+              <img [src]="imgURL" class="img-face-scan">
             </div>
           </div>
-          <form>
+          <form (ngSubmit)="onSubmit()" [formGroup]="imageForm" class="form">
+            <div class="request-face-api" #imageFile></div>
             <div class="form-group">
-                <input type="file" class="form-control-file" name="file" id="fotoUser" formControlName="imgFile" accept="image/*">
-                <button type="submit" class="btn btn-outline-secondary mt-3">
-                  Subir
-                  <i class="uil uil-upload">
-                  </i></button>
+              <div class="fotoUser container-btn-file" id="add-file">
+                <label for="btn-file"><i class="uil uil-image-plus ico-file"></i>Adjuntar archivo</label>
+                <input formControlName="imgFile" (change)="selectImage($event)" type="file"
+                class="form-control-file" name="file" id="btn-file" formControlName="imgFile" accept="image/*">
+              </div>
+              <button type="submit" class="btn-submit" [disabled]="btnActive">
+                <i class="uil uil-upload ico-file"></i>Guardar imagen
+              </button>
             </div>
         </form>
           <!--input type="file" (change)="onSelectFile($event)" class="class-foto-user"/-->
