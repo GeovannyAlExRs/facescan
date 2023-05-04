@@ -25,10 +25,6 @@ export class FirebaseConnectService {
     this.firestoreCollection = firestore.collection<ImageModel>('faceUser')
   }
 
-  getImageFirebase() {
-
-  }
-
   loadImageFirebase(imgFileItem: FileItems, imageData: ImageModel) {
     console.log('LOAD DATA IMG FileItems: ', imgFileItem, ' ImageModel: ', imageData);
 
@@ -49,12 +45,12 @@ export class FirebaseConnectService {
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
         itemFile.url = downloadURL
 
-        this.saveImageFirebase({nameImg: imageData.nameImg, imgURL: itemFile.url})
+        this.saveImageFirebase({nameImg: imageData.nameImg, imgUrl: itemFile.url})
       })
     })
   }
 
-  async saveImageFirebase(imgData: { nameImg: string, imgURL: string}): Promise<any> {
+  async saveImageFirebase(imgData: { nameImg: string, imgUrl: string}): Promise<any> {
     try {
       return await this.firestore.collection('faceUser').add(imgData)
     } catch (error) {
@@ -62,4 +58,18 @@ export class FirebaseConnectService {
     }
   }
 
+  getImageFirebase(): Observable<ImageModel[]> {
+    return this.firestoreCollection.snapshotChanges().pipe(
+      map( request => request.map( i => {
+        const data = i.payload.doc.data() as ImageModel
+        const id = i.payload.doc.id
+
+        return {id, ...data}
+      }))
+    )
+  }
+
+  getImage(id: any){
+    return this.firestoreCollection.doc(id).valueChanges();
+  }
 }

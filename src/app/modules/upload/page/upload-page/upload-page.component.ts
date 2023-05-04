@@ -1,3 +1,4 @@
+import { ParseSourceFile } from '@angular/compiler';
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ImageModel } from '@core/model/image.model';
@@ -14,7 +15,7 @@ import Swal from 'sweetalert2';
 export class UploadPageComponent  implements OnInit{
 
   imgElement = ''
-  imgURL = '../../../../../assets/image/scan.png'
+  imgSCAN = '../../../../../assets/image/scan.png'
   image: any
   imgData: ImageModel[] = []
   imgProcess: any;
@@ -31,7 +32,7 @@ export class UploadPageComponent  implements OnInit{
   })
 
   ngOnInit(): void {
-    //this.mostrarImg()
+    this.viewImage()
   }
 
   selectImage(event: any) {
@@ -48,11 +49,11 @@ export class UploadPageComponent  implements OnInit{
       reader.readAsDataURL(this.fileImg[0]);
 
       reader.onloadend = (event: any) => {
-        this.imgURL = event.target.result;
+        this.imgSCAN = event.target.result;
         this.imgElement = event.target.result;
         elementImage.src = `${this.imgElement}`;
         this.image = { file: this.fileImg[0] }
-        //console.log('ImgURL: ', this.imgURL, ' SRC: ', elementImage.src, ' this.image: ', this.image);
+        //console.log('imgSCAN: ', this.imgSCAN, ' SRC: ', elementImage.src, ' this.image: ', this.image);
       }
 
       this.btnActive = false;
@@ -100,15 +101,15 @@ export class UploadPageComponent  implements OnInit{
 
       setTimeout(() => {
         imageContainer.querySelector('.status').innerText = '';
-        this.imgURL = '../../../../../assets/image/scan.png';
+        this.imgSCAN = '../../../../../assets/image/scan.png';
         this.imageForm.reset();
-        this.btnActive = true;
       }, 3500);
 
+      this.btnActive = true;
     } else {
       imageContainer.querySelector('.status').innerText = 'Imagen Procesada';
       imageContainer.querySelector('.status').style.background = '#078565';
-      //this.onSubmit();
+      setTimeout(() => { this.onSubmit() }, 2000);
 
       setTimeout(() => {
         imageContainer.querySelector('.status').innerText = '';
@@ -116,14 +117,16 @@ export class UploadPageComponent  implements OnInit{
     }
   }
 
-  /*mostrarImg() {
-    this.imagenesSvc.getImagenes().subscribe(res => {
+  viewImage() {
+    this._firebase.getImageFirebase().subscribe(res => {
       this.imgData = [];
-      res.forEach((element: ImagenesModel) => {
+
+      res.forEach((element: ImageModel) => {
         this.imgData.push({ ...element })
       })
+      //console.log('DATA: ', this.imgData);
     })
-  }*/
+  }
 
 
   onSubmit() {
@@ -148,7 +151,7 @@ export class UploadPageComponent  implements OnInit{
           text: 'En breve aparecera la imagen cargada'
         }).then((result) => {
           if (result) {
-            this.imgURL = '../../../../../assets/image/scan.png';
+            this.imgSCAN = '../../../../../assets/image/scan.png';
             this.imageForm.reset();
           }
         })

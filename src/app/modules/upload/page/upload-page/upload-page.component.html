@@ -7,7 +7,7 @@
           <div class="card-img">
             <div class="sub-card-img fotoUser">
               <!--i class="uil uil-capture img-face-scan"></i-->
-              <img [src]="imgURL" class="img-face-scan">
+              <img [src]="imgSCAN" class="img-face-scan">
             </div>
           </div>
           <form (ngSubmit)="onSubmit()" [formGroup]="imageForm" class="form">
@@ -31,25 +31,32 @@
     <div class="main-right">
       <div class="card-header">
         <div class="sub-card">
-          <div class="card text-white bg-dark mb-3">
-            <h3>Rostro Procesados</h3>
-            <table class="table table-hover table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">Imagen</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>foto.png</td>
-                        <td>Geovanny AlEx Rs</td>
-                        <td><button class="btn btn-danger btn-sm"><i class="uil uil-times-circle"></i></button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+          <h3>Rostro Procesados</h3>
+            <div class="card-sub-table">
+              <table class="table-header">
+                  <thead>
+                      <tr>
+                          <th scope="col">Foto</th>
+                          <th scope="col">Usuario</th>
+                          <th scope="col">Accion</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let data of imgData">
+                          <td data-label="Foto">
+                            <img [src]="data.imgUrl" class="cover-img">
+                          </td>
+                          <td data-label="Usuario">{{data.nameImg}}</td>
+                          <td data-label="Accion">
+                            <button class="btn btn-danger">
+                              <i class="uil uil-times-circle"></i>
+                            </button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+
+            </div>
         </div>
       </div>
     </div>
