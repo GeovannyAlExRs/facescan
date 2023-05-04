@@ -15,7 +15,7 @@
         <tbody>
           <tr *ngFor="let data of imgData">
             <td data-label="Foto">
-                <img [src]="data.imgUrl" class="cover-img">
+                <img appImgDefault [src]="data.imgUrl" class="cover-img">
             </td>
             <td data-label="Usuario">{{data.nameImg}}</td>
             <td data-label="Accion">

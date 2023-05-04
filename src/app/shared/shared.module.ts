@@ -7,12 +7,14 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { CardUploadComponent } from './components/card-upload/card-upload.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ImgDefaultDirective } from './directives/img-default.directive';
 
 @NgModule({
   declarations: [
     SideBarComponent,
     CardListComponent,
-    CardUploadComponent
+    CardUploadComponent,
+    ImgDefaultDirective
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     SideBarComponent,
     CardListComponent,
-    CardUploadComponent
+    CardUploadComponent,
+    ImgDefaultDirective
   ]
 })
 export class SharedModule { }
