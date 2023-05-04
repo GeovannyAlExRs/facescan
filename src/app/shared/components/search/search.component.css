@@ -1,0 +1,17 @@
+.search-component {
+  padding: 0;
+  width: 200px;
+  text-align: right;
+}
+
+.search-component input {
+  border: 0;
+  border-radius: 50px;
+  border: #e5eaf0 1px solid;
+  height: 25px;
+  padding: 0 .75rem;
+  font-size: 90%;
+  background-color: rgba(172, 194, 218, 0.1);
+  color:#e5eaf0;
+  font-family: var(--font-family-1);
+}

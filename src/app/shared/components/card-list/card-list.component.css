@@ -31,6 +31,13 @@
   align-content: start;
 }
 
+.sub-card-header {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+}
+
 .card-sub-table{
   max-height: 82%;
   overflow-y: scroll;

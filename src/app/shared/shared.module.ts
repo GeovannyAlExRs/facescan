@@ -6,20 +6,25 @@ import { RouterModule } from '@angular/router';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { CardUploadComponent } from './components/card-upload/card-upload.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImgDefaultDirective } from './directives/img-default.directive';
+import { SearchPipe } from './pipe/search/search.pipe';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     SideBarComponent,
     CardListComponent,
     CardUploadComponent,
-    ImgDefaultDirective
+    ImgDefaultDirective,
+    SearchPipe,
+    SearchComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     SideBarComponent,

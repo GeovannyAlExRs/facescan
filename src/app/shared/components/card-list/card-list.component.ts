@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ImageModel } from '@core/model/image.model';
 import { FirebaseConnectService } from '@shared/services/firebase/firebase-connect.service';
 import Swal from 'sweetalert2';
@@ -12,11 +12,17 @@ export class CardListComponent implements OnInit {
 
   imgData: ImageModel[] = []
   loading = false
+  src: string = ''
 
   constructor(private _firebase: FirebaseConnectService) {}
 
   ngOnInit(): void {
     this.viewImage()
+  }
+
+  receiveData(event: string): void {
+    console.log('Estoy desde el padre: ', event);
+    this.src = event
   }
 
   viewImage() {

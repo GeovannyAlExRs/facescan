@@ -2,6 +2,7 @@
   <div class="sub-card">
     <div class="sub-card-header">
       <h3>Rostro Procesados</h3>
+      <app-search (callbackData)="receiveData($event)"></app-search>
     </div>
     <div class="card-sub-table">
       <table class="table-header">
@@ -13,7 +14,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of imgData">
+          <tr *ngFor="let data of imgData | search:src">
             <td data-label="Foto">
                 <img appImgDefault [src]="data.imgUrl" class="cover-img">
             </td>
