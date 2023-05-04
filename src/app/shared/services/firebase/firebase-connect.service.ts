@@ -72,4 +72,16 @@ export class FirebaseConnectService {
   getImage(id: any){
     return this.firestoreCollection.doc(id).valueChanges();
   }
+
+  public eliminarImagen(id: string, imgName: string){
+    const storage = getStorage();
+    const deleteImg = ref(storage, `${this.FILE_IMAGE}/${imgName.replace(/ /g, '')}`);
+
+    deleteObject(deleteImg).then(()=>{
+      Swal.fire('EXITO', 'El usuario ha sido eliminado correctamente', 'success');
+    }).catch((err)=>{
+      console.error(err);
+    });
+    return this.firestoreCollection.doc(id).delete();
+  }
 }
