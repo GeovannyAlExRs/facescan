@@ -31,9 +31,7 @@ export class UploadPageComponent  implements OnInit{
     imgFile: ['']
   })
 
-  ngOnInit(): void {
-    this.viewImage()
-  }
+  ngOnInit(): void { }
 
   selectImage(event: any) {
     if (event.target.files.length > 0) {
@@ -116,18 +114,6 @@ export class UploadPageComponent  implements OnInit{
     }
   }
 
-  viewImage() {
-    this._firebase.getImageFirebase().subscribe(res => {
-      this.imgData = [];
-
-      res.forEach((element: ImageModel) => {
-        this.imgData.push({ ...element })
-      })
-      //console.log('DATA: ', this.imgData);
-    })
-  }
-
-
   onSubmit() {
     Swal.fire({
       title: 'Ingresa el nombre de la imagen',
@@ -163,23 +149,6 @@ export class UploadPageComponent  implements OnInit{
             confirmButtonText: 'OK'
           }).then((result) => { this.imageForm.reset() })
         }
-      }
-    })
-  }
-
-
-  deleteUserImage(id: any, nameImg: string) {
-    console.log("Eliminando imagen");
-
-    Swal.fire({
-      icon: 'question',
-      title: 'Seguro que desea eliminar el usuario ' + nameImg + '?',
-      showCancelButton:true,
-      confirmButtonText:'Eliminar',
-      allowOutsideClick:false
-    }).then((result)=>{
-      if (result.isConfirmed) {
-        this._firebase.eliminarImagen(id, nameImg);
       }
     })
   }

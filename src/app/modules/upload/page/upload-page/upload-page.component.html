@@ -27,36 +27,7 @@
     </div>
 
     <div class="main-right">
-      <div class="card-header">
-        <div class="sub-card">
-          <h3>Rostro Procesados</h3>
-            <div class="card-sub-table">
-              <table class="table-header">
-                  <thead>
-                      <tr>
-                          <th scope="col">Foto</th>
-                          <th scope="col">Usuario</th>
-                          <th scope="col">Accion</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr *ngFor="let data of imgData">
-                          <td data-label="Foto">
-                            <img [src]="data.imgUrl" class="cover-img">
-                          </td>
-                          <td data-label="Usuario">{{data.nameImg}}</td>
-                          <td data-label="Accion">
-                            <button class="btn btn-danger" (click)="deleteUserImage(data.id, data.nameImg)">
-                              <i class="uil uil-times-circle"></i>
-                            </button>
-                          </td>
-                      </tr>
-                  </tbody>
-              </table>
-
-            </div>
-        </div>
-      </div>
+      <app-card-list></app-card-list>
     </div>
   </div>
 </div>
