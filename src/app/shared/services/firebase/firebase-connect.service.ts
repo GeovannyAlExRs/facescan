@@ -73,9 +73,9 @@ export class FirebaseConnectService {
     return this.firestoreCollection.doc(id).valueChanges();
   }
 
-  public eliminarImagen(id: string, imgName: string){
+  public eliminarImagen(id: string, nameImg: string){
     const storage = getStorage();
-    const deleteImg = ref(storage, `${this.FILE_IMAGE}/${imgName.replace(/ /g, '')}`);
+    const deleteImg = ref(storage, `${this.FILE_IMAGE}/${nameImg.replace(/ /g, '')}`);
 
     deleteObject(deleteImg).then(()=>{
       Swal.fire('EXITO', 'El usuario ha sido eliminado correctamente', 'success');

@@ -168,19 +168,19 @@ export class UploadPageComponent  implements OnInit{
   }
 
 
-  /*eliminar(id:any, nombreImagen:string) {
+  deleteUserImage(id: any, nameImg: string) {
     console.log("Eliminando imagen");
 
     Swal.fire({
       icon: 'question',
-      title: 'Desea eliminar el registro?',
+      title: 'Seguro que desea eliminar el usuario ' + nameImg + '?',
       showCancelButton:true,
       confirmButtonText:'Eliminar',
       allowOutsideClick:false
     }).then((result)=>{
       if (result.isConfirmed) {
-        //this._imgService.eliminarImagen(id, nombreImagen);
+        this._firebase.eliminarImagen(id, nameImg);
       }
     })
-  }*/
+  }
 }

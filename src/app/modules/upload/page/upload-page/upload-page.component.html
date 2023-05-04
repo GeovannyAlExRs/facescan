@@ -46,7 +46,7 @@
                           </td>
                           <td data-label="Usuario">{{data.nameImg}}</td>
                           <td data-label="Accion">
-                            <button class="btn btn-danger">
+                            <button class="btn btn-danger" (click)="deleteUserImage(data.id, data.nameImg)">
                               <i class="uil uil-times-circle"></i>
                             </button>
                           </td>
