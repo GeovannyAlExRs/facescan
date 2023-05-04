@@ -80,7 +80,7 @@ export class FirebaseConnectService {
     deleteObject(deleteImg).then(()=>{
       Swal.fire('EXITO', 'El usuario ha sido eliminado correctamente', 'success');
     }).catch((err)=>{
-      console.error(err);
+      console.error('ERROR AL ELIMINAR ', err);
     });
     return this.firestoreCollection.doc(id).delete();
   }

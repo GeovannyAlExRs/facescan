@@ -65,8 +65,8 @@ export class UploadPageComponent  implements OnInit{
       icon.classList.add('uil');
       icon.classList.add('uil-spinner');
       icon.classList.add('uil-spinner-alt');
-      /*
-      icon.classList.add('fa-spinner');
+
+      /*icon.classList.add('fa-spinner');
       icon.classList.add('fa-pulse');*/
 
       status.classList.add('status');
@@ -104,7 +104,6 @@ export class UploadPageComponent  implements OnInit{
         this.imgSCAN = '../../../../../assets/image/scan.png';
         this.imageForm.reset();
       }, 3500);
-
       this.btnActive = true;
     } else {
       imageContainer.querySelector('.status').innerText = 'Imagen Procesada';
@@ -130,7 +129,6 @@ export class UploadPageComponent  implements OnInit{
 
 
   onSubmit() {
-    //console.log('SUBMIT: GUARDANDO IMAGEN');
     Swal.fire({
       title: 'Ingresa el nombre de la imagen',
       input: 'text',
@@ -141,7 +139,6 @@ export class UploadPageComponent  implements OnInit{
     }).then((result) => {
       if (result.isConfirmed && result.value) {
         let loadImgData: any = { nameImg: result.value }
-        //console.log('ENVIAR DATO A FIREBASE => imgaDATA: ', loadImgData, ' Image: ', this.image);
 
         this._firebase.loadImageFirebase(this.image, loadImgData);
 
