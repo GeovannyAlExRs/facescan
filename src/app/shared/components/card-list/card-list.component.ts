@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class CardListComponent implements OnInit {
 
   imgData: ImageModel[] = []
+  loading = false
 
   constructor(private _firebase: FirebaseConnectService) {}
 
@@ -19,8 +20,11 @@ export class CardListComponent implements OnInit {
   }
 
   viewImage() {
+    this.loading = true
     this._firebase.getImageFirebase().subscribe(res => {
+
       this.imgData = [];
+      this.loading = false
 
       res.forEach((element: ImageModel) => {
         this.imgData.push({ ...element })

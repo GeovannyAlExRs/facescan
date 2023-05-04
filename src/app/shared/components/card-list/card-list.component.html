@@ -1,30 +1,38 @@
 <div class="card-header">
   <div class="sub-card">
-    <h3>Rostro Procesados</h3>
-      <div class="card-sub-table">
-        <table class="table-header">
-            <thead>
-                <tr>
-                    <th scope="col">Foto</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Accion</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let data of imgData">
-                    <td data-label="Foto">
-                      <img [src]="data.imgUrl" class="cover-img">
-                    </td>
-                    <td data-label="Usuario">{{data.nameImg}}</td>
-                    <td data-label="Accion">
-                      <button class="btn btn-danger" (click)="deleteUserImage(data.id, data.nameImg)">
-                        <i class="uil uil-times-circle"></i>
-                      </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="sub-card-header">
+      <h3>Rostro Procesados</h3>
+    </div>
+    <div class="card-sub-table">
+      <table class="table-header">
+        <thead>
+          <tr>
+            <th scope="col">Foto</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of imgData">
+            <td data-label="Foto">
+                <img [src]="data.imgUrl" class="cover-img">
+            </td>
+            <td data-label="Usuario">{{data.nameImg}}</td>
+            <td data-label="Accion">
+              <button class="btn btn-danger" (click)="deleteUserImage(data.id, data.nameImg)">
+                <i class="uil uil-times-circle"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
+      <h4 *ngIf="imgData.length == 0" class="text-muted mt-3">No hay registros en lista</h4>
+      <div *ngIf="loading" class="loadingio-spinner-dual">
+        <div class="ldio">
+          <div></div><div><div></div></div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
