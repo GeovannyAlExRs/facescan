@@ -1,26 +1,28 @@
-.card-header, .sub-card-img, .form-group {
+:host, .card-header {
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
+  margin: 0px;
+  padding: 0px;
+  height: 95%;
+  width: 100%;
 }
 
 .card-header {
   margin: 0px;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   text-align: center;
   padding: 10px;
-  background-color: hsla(222, 95%, 7%, 0.75);
+  /*background-color: hsla(222, 95%, 7%, 0.75);*/
   border-radius: var(--border-radius-1);
-  /*border: 1px yellow solid;*/
 }
 
 .sub-card {
   margin: 0;
   height: 100%;
   width: 100%;
-  /*background-color: hsla(222, 30%, 24%, 0.849);*/
   text-align: center;
   padding: 0 15px 0 15px;
   display: block;
@@ -31,7 +33,6 @@
 
 .title {
   width: 100%;
-  /*border: 1px yellow solid;*/
 }
 
 .card-img {

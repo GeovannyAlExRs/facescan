@@ -1,1 +1,23 @@
-<p>card-upload works!</p>
+<div class="card-header">
+  <div class="sub-card">
+    <h3 class="title">Cargar imagen</h3>
+    <div class="card-img">
+      <div class="sub-card-img fotoUser">
+        <img [src]="imgSCAN" class="img-face-scan">
+      </div>
+    </div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="imageForm" class="form"><!-- -->
+      <div class="request-face-api" #imageFile></div>
+      <div class="form-group">
+        <div class="fotoUser container-btn-file" id="add-file">
+          <label for="btn-file"><i class="uil uil-image-plus ico-file"></i>Adjuntar archivo</label>
+          <input (change)="selectImage($event)" formControlName="imgFile" type="file"
+          class="form-control-file" name="file" id="btn-file" formControlName="imgFile" accept="image/*"> <!---->
+        </div>
+        <button [disabled]="btnActive" type="submit" class="btn-submit"><!---->
+          <i class="uil uil-upload ico-file"></i>Guardar imagen
+        </button>
+      </div>
+  </form>
+  </div>
+</div>

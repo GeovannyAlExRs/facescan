@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { UploadRoutingModule } from './upload-routing.module';
 import { UploadPageComponent } from './page/upload-page/upload-page.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
-
 
 @NgModule({
   declarations: [
@@ -13,8 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     UploadRoutingModule,
-    SharedModule,
-    ReactiveFormsModule
+    SharedModule
   ]
 })
 export class UploadModule { }

@@ -1,4 +1,4 @@
-.content-main, .main-left, .card-header, .sub-card-img, .form-group {
+.content-main, .main-left, .sub-card-img, .form-group {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,15 +31,12 @@
   /*border: 2px white solid;*/
 }
 
-.card-header {
-  margin: 0px;
-  width: 90%;
-  height: 90%;
-  text-align: center;
-  padding: 10px;
-  background-color: hsla(222, 95%, 7%, 0.75);
-  border-radius: var(--border-radius-1);
-  /*border: 1px yellow solid;*/
+.main-left {
+  width: 40%;
+}
+
+.main-right {
+  width: 60%;
 }
 
 .sub-card {
@@ -53,124 +50,4 @@
   justify-content: center;
   align-items: center;
   align-content: start;
-}
-
-.title {
-  width: 100%;
-  /*border: 1px yellow solid;*/
-}
-
-.card-img {
-  margin-top: -10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  height: 70%;
-  width: 100%;
-  /*background-color: hsla(220, 13%, 23%, 0.925);
-  border: 1px solid red;
-  */
-}
-.sub-card-img {
-  height: 270px;
-  width: 270px;
-  border: 5px dashed rgba(118, 134, 145, 0.5);
-  background-color: hsla(222, 30%, 24%, 0.849);
-  border-radius: var(--border-radius-1);
-}
-
-.img-face-scan {
-  color: rgb(160, 172, 189);
-  width: 100%;
-  height: 100%;
-  border-radius: var(--border-radius-1);
-  object-fit: cover; /*busca el centro de la foto*/
-}
-
-.fotoUser{
-  background-color: none;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-}
-.fotoUser:hover{
-  background-color: rgba(233, 236, 239, 0.2);
-}
-.fotoUser:active{
-  border: rgba(118, 134, 145, 0.5) 2px solid;
-  background-color:rgba(233, 236, 239, 0.2);
-}
-
-.container-btn-file input[type="file"] {
-  appearance: none;
-  display: none;
-  visibility: hidden;
-  opacity: 0;
-}
-
-.container-btn-file {
-  display: inline-block;
-  position: relative;
-  background-color: transparent;
-  border: 1px solid rgb(161, 171, 182);
-  color: rgb(255, 255, 255);
-  padding: 8px 10px;
-  border-radius: 25px;
-}
-
-.container-btn-file label {
-  font-size: 15px;
-  display: block;
-  /*position: absolute;*/
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  top: 0;
-  left: 0;
-}
-
-.ico-file {
-  padding-right: 10px;
-}
-
-.btn-submit{
-  font-size: 15px;
-  padding: 8px 10px;
-  border-radius: 25px;
-  border: 1px solid rgb(6, 93, 186);
-  background-color: rgb(6, 93, 186);
-  color: rgb(255, 255, 255);
-}
-
-.foto{
-  height: 300px;
-  width: 300px;
-  border: rgba(118, 134, 145, 0.5) 5px solid;
-  box-shadow: 4px 4px 4px 0px rgba(73, 73, 73, 0.5);
-  border-radius: var(--border-radius-1);
-  justify-content: center;
-  align-items: center;
-  object-fit: cover; /*busca el centro de la foto*/
-}
-.form {
-  width: 100%;
-}
-
-.form-group {
-  width: 100%;
-  /*border: 1px solid yellow;*/
-  display: flex;
-  justify-content: space-around;
-}
-
-.request-face-api {
-  height: 25px;
-  /*background-color: #078565;*/
-  display: flex;
-  text-align: center;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
 }

@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { CardUploadComponent } from './components/card-upload/card-upload.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CardUploadComponent } from './components/card-upload/card-upload.compon
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     SideBarComponent,
