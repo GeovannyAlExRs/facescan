@@ -9,8 +9,16 @@
           <p class="lh-2">Sistema de reconocimiento facial mediante el uso de la camara web de tu ordenador, carga tus imagenes e identificalas mediante FaceApi</p>
         </small>
         <div class="btn-group">
-          <button class="btn-primary" type="submit">Cargar Foto</button>
-          <button class="btn-primary" type="submit">Iniciar Scan</button>
+          <!--button routerLink="" class="btn-primary" type="submit">Cargar Foto</!--button>
+          <button-- class="btn-primary" type="submit">Iniciar Scan</button-->
+          <ul class="list">
+            <li [routerLink]="item.router" [queryParams]="item.query" *ngFor="let item of mainMenu.defaultOptions">
+              <div class="btn-primary">
+                <i [ngClass]="['uil',item.icon]"></i>
+                <span class="btn-icon side-bar_list">{{item.name}}</span>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -23,24 +31,9 @@
           </small>
         </p>
         <div class="btn-wrapper text-center">
-          <a href="https://www.facebook.com/geovanny.alex.mr" class="btn btn-neutral btn-icon card" target="_blank">
+          <a  href="{{item.link}}" *ngFor="let item of mainMenu.accessLink" class="btn" target="_blank">
             <span class="btn-inner--icon">
-              <i class="uil uil-facebook-f"></i>
-            </span>
-          </a>
-          <a href="https://github.com/GeovannyAlExRs" class="btn btn-neutral btn-icon card" target="_blank">
-            <span class="btn-inner--icon">
-              <i class="uil uil-github"></i>
-            </span>
-          </a>
-          <a href="https://www.linkedin.com/in/geovanny-magallan-59ab5b99/" class="btn btn-neutral btn-icon card" target="_blank">
-            <span class="btn-inner--icon">
-              <i class="uil uil-linkedin"></i>
-            </span>
-          </a>
-          <a href="javascript:void(0)" class="btn btn-neutral btn-icon card" target="_blank">
-            <span class="btn-inner--icon">
-              <i class="uil uil-link"></i>
+              <i [ngClass]="['uil',item.icon]"></i>
             </span>
           </a>
         </div>

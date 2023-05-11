@@ -8,6 +8,7 @@
   justify-content: center;
   height: 100%;
   /*border: 1px red solid;*/
+  background-color: hsla(222, 94%, 7%, 0.3);
 }
 
 .sub-main {
@@ -20,7 +21,6 @@
 .main-left, .main-right {
   padding: 25px;
   width: 50%;
-  /*border: 1px green solid;*/
 }
 
 .card-header {
@@ -43,14 +43,31 @@
   text-align: center;
   display: flex;
   justify-content: space-evenly;
-  padding: 15px;
+  padding: 5px;
 }
 
+.list {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.list li {
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-icon {
+  padding-left: 5px;
+}
 .btn {
   display: inline-block;
   font-weight: 500;
   line-height: 1.53;
-  color: #697a8d;
+  color: #bdcee1;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -60,6 +77,11 @@
   padding: 0px 5px 0 5px;
   font-size: 20px;
   transition: all 0.2s ease-in-out;
+}
+
+.btn:hover, .list li:hover {
+  transform: scale(1.25);
+  color: rgb(255, 255, 255)
 }
 
 .btn-primary {
@@ -80,5 +102,4 @@
 
 .img-face-scan {
   height: 100%;
-  /*border: 1px red solid;*/
 }
