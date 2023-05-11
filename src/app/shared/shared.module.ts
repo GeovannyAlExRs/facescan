@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImgDefaultDirective } from './directives/img-default.directive';
 import { SearchPipe } from './pipe/search/search.pipe';
 import { SearchComponent } from './components/search/search.component';
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
+import { CardFaceComponent } from './components/card-face/card-face.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { SearchComponent } from './components/search/search.component';
     CardUploadComponent,
     ImgDefaultDirective,
     SearchPipe,
-    SearchComponent
+    SearchComponent,
+    VideoPlayerComponent,
+    CardFaceComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +34,9 @@ import { SearchComponent } from './components/search/search.component';
     SideBarComponent,
     CardListComponent,
     CardUploadComponent,
-    ImgDefaultDirective
+    ImgDefaultDirective,
+    VideoPlayerComponent,
+    CardFaceComponent
   ]
 })
 export class SharedModule { }

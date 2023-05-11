@@ -21,17 +21,14 @@ export class SideBarComponent  implements OnInit{
       },
       {
         name: 'Upload',
-        icon: 'uil uil-search',
+        icon: 'uil uil-image-upload',
         router: ['/', 'upload']
       },
       {
         name: 'Scan Face',
-        icon: 'uil uil-chart',
+        icon: 'uil uil-capture',
         router: ['/', 'scan'],
       }
     ]
-
   }
-
-
 }

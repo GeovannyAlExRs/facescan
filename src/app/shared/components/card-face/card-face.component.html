@@ -1,0 +1,30 @@
+<div class="zone-body">
+  <div class="block block-flex">
+    <div class="info-user">
+      <div><p>Informacion de usuario</p></div>
+      <div class="sub-info-user">
+        <img appImgDefault [src]="data.imgUrl" class="img-face">
+        <br>
+        <span>{{data.nameImg}}</span>
+        <br>
+        <span><small class="notification-user">{{register}}</small></span>
+      </div>
+    </div>
+
+    <div class="face-expression">
+      <div><p>Estado de animo</p></div>
+      <div class="block-expression">
+        <div *ngFor="let exp of listExpressions">
+          <small>
+            <span>{{exp.name}}: </span><span class="value-number">{{exp.value | number}}</span>
+          </small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="block block-point">
+    <div class="subtitle"><small>Puntos de referencia</small></div>
+    <div class="canvas-preview"></div>
+  </div>
+</div>

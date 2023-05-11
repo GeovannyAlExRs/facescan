@@ -1,1 +1,29 @@
-<p>scan-page works!</p>
+<div class="content-main">
+  <div class="sub-main">
+    <div class="main-left">
+      <div class="content-left">
+
+        <div class="header">
+          <i class="uil uil-video"></i>
+          <div class="in-header">
+            <p>APP - Reconocimiento Facial</p>
+          </div>
+          <div>{{id_document}}</div>
+        </div>
+
+        <div class="block-main">
+          <div class="webcam">
+            <app-video-player [id_document]="id_document" [stream]="currentStream" [width]="dimensionVideo.width" [height]="dimensionVideo.height"></app-video-player>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="main-right">
+      <div class="content-right">
+        <app-card-face></app-card-face>
+      </div>
+    </div>
+  </div>
+</div>

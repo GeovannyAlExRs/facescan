@@ -1,0 +1,31 @@
+<div *ngIf="modelsReady"><!---->
+  <video  #asVideoElement
+
+          (play)="listenerPlay()"
+          *ngIf="stream"
+          [srcObject]="stream"
+          [style.width]="width+'px'"
+          [style.height]="height+'px'">
+  </video> <!--(loadedmetadata)="loadedMetadata()"-->
+  <!--canvas
+          #asCanvasElement
+          [style.width]="width+'px'"
+          [style.height]="height+'px'"
+        class="canvas-video" id="canvas-detect">
+  </canvas-->
+</div>
+
+<div *ngIf="modelsReady" class="video-btn">
+  <button (click)="enableDetection()" type="button" class="btn">
+    <i class="uil" [ngClass]="{'uil-video': state === 'paused', 'uil-video-slash': state !== 'paused'}"></i>
+  </button>
+</div>
+
+<div *ngIf="!modelsReady">
+  <p>Cargando modelos de IA<p>
+  <div class="loadingio-spinner-dual">
+    <div class="ldio">
+      <div></div><div><div></div></div>
+    </div>
+  </div>
+</div>
