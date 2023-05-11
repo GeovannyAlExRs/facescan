@@ -24,6 +24,8 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
   state: string ='paused'
   listEvents: Array<any> = []
   modelsReady: boolean
+  loading: boolean
+  loadingText: string = ''
   overCanvas: any
 
 
@@ -33,6 +35,7 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
               private idUserService: IdUserService) {}
 
   ngOnInit(): void {
+    this.loading = true
     this.listImg()
     this.listenerEvents()
   }
@@ -44,8 +47,11 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
 
   listenerEvents = () => {
     const observer1$ = this.faceApiService.callbackModels.subscribe(res => {
+      //setInterval(() => {this.modelsReady = true}, 250)
       this.modelsReady = true
       this.checkFace()
+      this.loading = false
+      this.loadingText = 'Active la camara'
     })
 
     const observer2$ = this.videoServices.callBackAi
@@ -75,8 +81,8 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
   }
 
   drawFace = (resizedDetections, displaySize, eyes) => {
+    this.loading = true
     const { globalFace } = this.faceApiService
-
     this.overCanvas.getContext('2d').clearRect(0, 0, displaySize.width, displaySize.height)
     globalFace.draw.drawDetections(this.overCanvas, resizedDetections)
     //globalFace.draw.drawFaceLandmarks(this.overCanvas, resizedDetections)
@@ -104,6 +110,7 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
     } else {
       this.loadedMetadata()
       this.state = 'play'
+      this.loadingText = 'Loading...'
       console.log('VIDEO PLAY - STATE: ', this.state);
     }
   }

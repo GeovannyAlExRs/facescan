@@ -1,4 +1,4 @@
-<div *ngIf="modelsReady"><!---->
+<div *ngIf="modelsReady">
   <video  #asVideoElement
 
           (play)="listenerPlay()"
@@ -7,12 +7,6 @@
           [style.width]="width+'px'"
           [style.height]="height+'px'">
   </video> <!--(loadedmetadata)="loadedMetadata()"-->
-  <!--canvas
-          #asCanvasElement
-          [style.width]="width+'px'"
-          [style.height]="height+'px'"
-        class="canvas-video" id="canvas-detect">
-  </canvas-->
 </div>
 
 <div *ngIf="modelsReady" class="video-btn">
@@ -21,11 +15,18 @@
   </button>
 </div>
 
-<div *ngIf="!modelsReady">
-  <p>Cargando modelos de IA<p>
-  <div class="loadingio-spinner-dual">
-    <div class="ldio">
-      <div></div><div><div></div></div>
+<div *ngIf="!modelsReady" class="card-model-ia">
+  <div class="subcard-model-ia">
+    <br><br><br><br><br>
+    <div class="loadingio-spinner-dual">
+      <div class="ldio">
+        <div></div><div><div></div></div>
+      </div>
     </div>
+    <p>Cargando modelos de IA...<p>
   </div>
+</div>
+
+<div *ngIf="!loading" class="loading">
+  <p>{{loadingText}}</p>
 </div>
