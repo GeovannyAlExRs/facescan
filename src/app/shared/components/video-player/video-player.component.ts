@@ -42,7 +42,12 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.listEvents.forEach(event => { event.unsubscribe() });
-    this.stream.getTracks().forEach(track => track.stop())
+    this.videoElement.nativeElement.pause()
+    this.modelsReady = true
+    this.state = 'pause'
+    if (this.videoElement) {
+      this.videoElement.nativeElement.srcObject.getVideoTracks().forEach(track => track.stop());
+    }
   }
 
   listenerEvents = () => {
@@ -60,8 +65,6 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
                         if(resizedDetections) {
                           this.drawFace(resizedDetections, displaySize, eyes)
                           this.processFaceService.descriptor(resizedDetections)
-                          //this.id_document = this.processFaceService.idImg
-                          //console.log('ID DOCUMENT: ', this.id_document);
                           this.idUserService.id_document.emit(this.processFaceService.idImg)
                         } else {
                           console.log('NO DETECTA ROSTRO');
@@ -81,11 +84,23 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
   }
 
   drawFace = (resizedDetections, displaySize, eyes) => {
-    this.loading = true
-    const { globalFace } = this.faceApiService
-    this.overCanvas.getContext('2d').clearRect(0, 0, displaySize.width, displaySize.height)
-    globalFace.draw.drawDetections(this.overCanvas, resizedDetections)
-    //globalFace.draw.drawFaceLandmarks(this.overCanvas, resizedDetections)
+    try {
+      this.loading = true
+      this.modelsReady = true
+      const { globalFace } = this.faceApiService
+      if(this.state !== 'paused') {
+        if (this.videoElement) {
+          this.overCanvas.getContext('2d').clearRect(0, 0, displaySize.width, displaySize.height)
+          globalFace.draw.drawDetections(this.overCanvas, resizedDetections)
+          //globalFace.draw.drawFaceLandmarks(this.overCanvas, resizedDetections)
+        }
+      } else {
+        this.overCanvas.getContext('2d').clearRect(0, 0, displaySize.width, displaySize.height)
+      }
+    } catch (error) {
+      //console.log('ERROR AL REPRODUCIR VIDEO: ', error);
+      //this.overCanvas.getContext('2d').clearRect(0, 0, displaySize.width, displaySize.height)
+    }
   }
 
   loadedMetadata(): void {
@@ -93,13 +108,19 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
   }
 
   listenerPlay(): void {
-    const { globalFace } = this.faceApiService
+    try {
+      if (this.videoElement) {
+        const { globalFace } = this.faceApiService
 
-    this.overCanvas = globalFace.createCanvasFromMedia(this.videoElement.nativeElement)
-    this.renderer.setProperty(this.overCanvas, 'id', 'new-canvas-over')
-    this.renderer.setStyle(this.overCanvas, 'width', `${this.width}px`)
-    this.renderer.setStyle(this.overCanvas, 'height', `${this.height}px`)
-    this.renderer.appendChild(this.elementRef.nativeElement, this.overCanvas)
+        this.overCanvas = globalFace.createCanvasFromMedia(this.videoElement.nativeElement)
+        this.renderer.setProperty(this.overCanvas, 'id', 'new-canvas-over')
+        this.renderer.setStyle(this.overCanvas, 'width', `${this.width}px`)
+        this.renderer.setStyle(this.overCanvas, 'height', `${this.height}px`)
+        this.renderer.appendChild(this.elementRef.nativeElement, this.overCanvas)
+      }
+    } catch (error) {
+      console.log('Aun no se ha podido crear el canvas, pause la camara');
+    }
   }
 
   enableDetection(): void {
@@ -108,9 +129,9 @@ export class VideoPlayerComponent implements OnInit, OnDestroy {
       this.videoElement.nativeElement.pause()
       console.log('VIDEO PAUSE - STATE: ', this.state);
     } else {
+      this.loadingText = 'Loading...'
       this.loadedMetadata()
       this.state = 'play'
-      this.loadingText = 'Loading...'
       console.log('VIDEO PLAY - STATE: ', this.state);
     }
   }

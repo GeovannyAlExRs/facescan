@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-scan-page',
   templateUrl: './scan-page.component.html',
   styleUrls: ['./scan-page.component.css']
 })
-export class ScanPageComponent implements OnInit {
+export class ScanPageComponent implements OnInit, OnDestroy {
 
   public currentStream: any
   public dimensionVideo: any
@@ -18,22 +18,31 @@ export class ScanPageComponent implements OnInit {
     this.getSizeCam()
   }
 
+  ngOnDestroy(): void {
+  }
+
   constructor() {}
 
   checkMediaSrc = () => {
-    if(navigator && navigator.mediaDevices) {
+    try {
+      if(navigator && navigator.mediaDevices) {
 
-      navigator.mediaDevices.getUserMedia({
-        audio: false, video: true
-      }).then(stream => {
-        this.currentStream = stream
-      }).catch(() => {
-        console.log('Error de permisos');
-      })
+        navigator.mediaDevices.getUserMedia({
+          audio: false, video: true
+        }).then(stream => {
+          this.currentStream = stream
+          //console.log('STREAM: ', stream.active);
+        }).catch(() => {
+          console.log('Error de permisos');
+        })
 
-    } else {
-      console.log('No tiene dispositivos de media player');
+      } else {
+        console.log('No tiene dispositivos de media player');
+      }
+    } catch (error) {
+      console.log('Acceso denegado, debe habilitar la camara.!');
     }
+
   }
 
   getSizeCam = () => {
